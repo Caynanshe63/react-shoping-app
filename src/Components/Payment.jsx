@@ -9,6 +9,8 @@ const Payment = () => {
   }
   const [paymentMethod, setPaymentMethod] = useState(initalPayment);
 
+  const [phone, setPhone] = useState("");
+
   const SelectMethod = (method) =>{
     setPaymentMethod({
       evc : false,
@@ -19,6 +21,19 @@ const Payment = () => {
     });
   }
 
+  const handlePhone = (event) =>{
+    setPhone(event.target.value);
+  }
+
+  const handleSubmit =(event)=>{
+    event.preventDefault();
+    if(phone.length>0){
+      alert("Payment Success");
+    }else{
+      alert("Invalid Phone");
+    }
+    
+  }
   
 
   return (
@@ -39,8 +54,8 @@ const Payment = () => {
             <h3>SAHAL</h3>
         </div>
       </div>
-      <form >
-        <input type="text" placeholder="2526........." className="form-control"/>
+      <form onSubmit={handleSubmit}>
+        <input type="text" onChange={handlePhone} placeholder="2526........." className="form-control"/>
         <button className="btn-proceed">Proceed</button>
       </form>
     </div>

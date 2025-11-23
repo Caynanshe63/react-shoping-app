@@ -1,7 +1,11 @@
+import { useShop } from "../ShopContext"
 import CartProducts from "./CartProducts"
 import Payment from "./Payment"
 
 const Cart = () => {
+  const {products} = useShop();
+
+  if(products.length <= 0) return <h1>Cart Is Empty</h1>
   return (
     <div className="cart-container">
       <CartProducts />
